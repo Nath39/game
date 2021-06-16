@@ -51,7 +51,7 @@ def draw_game():
 
 def draw():
     screen.fill(WHITE)
-    screen.blit(image, (0, 50))
+    screen.blit(image, (0, 0))
     if is_game_over[0]:
         draw_game_over()
     else:
