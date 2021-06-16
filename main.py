@@ -13,6 +13,11 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("PONG")
 image = pygame.image.load("image.jpg")
 
+# ajout d'une musique
+
+music = pygame.mixer.Sound("Chocobo_s-Theme.ogg")
+music.play()
+
 # creating a object
 
 clock = pygame.time.Clock()
