@@ -1,14 +1,16 @@
 import pygame
 from constants import *
 
+from paddle import Paddle
+
 
 class Ball:
     def __init__(self):
         self.vx = 5
         self.vy = 5
-        self.x = SCREEN_WIDTH // 2
+        self.x = SCREEN_WIDTH // 2 
         self.y = SCREEN_HEIGHT // 2
-        self.radius = 10
+        self.radius = 20 #taille de la ball
 
     def get_rect(self):
         return pygame.Rect(
@@ -26,14 +28,13 @@ class Ball:
         if self.y > SCREEN_HEIGHT - self.radius // 2 or self.y < self.radius // 2:
             self.vy *= -1
 
-        if self.get_rect().colliderect(left_paddle.rect) or self.get_rect().colliderect(
-            right_paddle.rect
-        ):
+        if self.get_rect().colliderect(left_paddle.rect) or self.get_rect().colliderect(right_paddle.rect):
             self.vx *= -1
 
     def update(self, left_paddle, right_paddle, is_game_over):
         self.move()
         self.handle_collisions(left_paddle, right_paddle, is_game_over)
+        
 
     def draw(self, screen):
         pygame.draw.circle(screen, RED, (self.x, self.y), self.radius)

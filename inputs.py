@@ -14,7 +14,11 @@ def handle_input(left_paddle, right_paddle):
     pygame.event.pump()
     keys = pygame.key.get_pressed()
     done = ()
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
     if keys[K_z]:
         left_paddle.move_up()
     elif keys[K_s]:

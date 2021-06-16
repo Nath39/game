@@ -1,14 +1,16 @@
 # paddle.py
 import pygame
+from pygame import image
 from constants import *
 
-BLUE = (0, 0, 255)
+#BLUE = (0, 0, 255)
 
 class Paddle:
     MOVE_SPEED = 10
 
-    def __init__(self):
-        self.rect = pygame.Rect(0, SCREEN_HEIGHT // 2, 20, 200)
+    def __init__(self , taille):
+        self.rect = pygame.Rect(0, SCREEN_HEIGHT // 2, 20, taille)
+        
 
     def move_up(self):
         self.rect.y -= self.MOVE_SPEED
