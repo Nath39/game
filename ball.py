@@ -1,21 +1,18 @@
 import pygame
+from pygame.mixer import Sound
 from constants import *
-
-from paddle import Paddle
 
 
 class Ball:
     def __init__(self):
-        self.vx = 5
-        self.vy = 5
-        self.x = SCREEN_WIDTH // 2 
+        self.vx = 10
+        self.vy = 10
+        self.x = SCREEN_WIDTH // 2
         self.y = SCREEN_HEIGHT // 2
-        self.radius = 20 #taille de la ball
+        self.radius = 10
 
     def get_rect(self):
-        return pygame.Rect(
-            self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2
-        )
+        return pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
 
     def move(self):
         self.x += self.vx
@@ -28,13 +25,18 @@ class Ball:
         if self.y > SCREEN_HEIGHT - self.radius // 2 or self.y < self.radius // 2:
             self.vy *= -1
 
+            effet_click = pygame.mixer.Sound("Sounds_effect/click.ogg")
+            effet_click.play()
+
         if self.get_rect().colliderect(left_paddle.rect) or self.get_rect().colliderect(right_paddle.rect):
             self.vx *= -1
+            effet_click = pygame.mixer.Sound("Sounds_effect/click.ogg")
+            effet_click.play()
+            
 
     def update(self, left_paddle, right_paddle, is_game_over):
         self.move()
         self.handle_collisions(left_paddle, right_paddle, is_game_over)
-        
 
     def draw(self, screen):
         pygame.draw.circle(screen, RED, (self.x, self.y), self.radius)

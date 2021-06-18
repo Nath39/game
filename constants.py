@@ -1,12 +1,6 @@
 #constante
 
-SCREEN_WIDTH = 750
-SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 WHITE = 'white'
-<<<<<<< Updated upstream
 RED = 'red'
-=======
-RED = 'red'
-BLUE = 'blue'
-PADDLE_TALLE = 400
->>>>>>> Stashed changes
